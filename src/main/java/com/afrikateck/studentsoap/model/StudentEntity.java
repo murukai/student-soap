@@ -3,32 +3,25 @@ package com.afrikateck.studentsoap.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "students")
-public class StudentEntity {
+public class StudentEntity implements Serializable {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long studentID;
 
-  @Column(name = "firstName", length = 100)
-  @NotNull
   private String firstName;
 
-  @Column(name = "lastName", length = 100)
-  @NotNull
   private String lastName;
 
-  @Column(name = "dateOfBirth", length = 50)
-  @NotNull
   private String dateOfBirth;
 
-  @Column(name = "gender", length = 6)
-  @NotNull
   private String gender;
 
-  @Column(name = "positionInFamily", length = 5)
-
   private String positionInFamily;
+
+  private Long formID;
 
   public long getStudentID() {
     return studentID;
@@ -76,5 +69,13 @@ public class StudentEntity {
 
   public void setPositionInFamily(String positionInFamily) {
     this.positionInFamily = positionInFamily;
+  }
+
+  public Long getFormID() {
+    return formID;
+  }
+
+  public void setFormID(Long formID) {
+    this.formID = formID;
   }
 }

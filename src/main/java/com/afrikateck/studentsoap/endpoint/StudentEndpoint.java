@@ -19,6 +19,8 @@ public class StudentEndpoint {
 
   private StudentService service;
 
+
+
   public StudentEndpoint() {
 
   }
@@ -30,11 +32,13 @@ public class StudentEndpoint {
 
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getStudentByIdRequest")
   @ResponsePayload
-  public GetStudentByIdResponse getMovieById(@RequestPayload GetStudentByIdRequest request) {
+  public GetStudentByIdResponse getStudentById(@RequestPayload GetStudentByIdRequest request) {
     GetStudentByIdResponse response = new GetStudentByIdResponse();
-    StudentEntity movieEntity = service.getByID(request.getStudentID());
+    StudentEntity studentEntity = new StudentEntity();
+    studentEntity = service.getByID(request.getStudentID());
     Student student = new Student();
-    BeanUtils.copyProperties(movieEntity, student);
+    BeanUtils.copyProperties(studentEntity, student);
+    //student = StudentUtility.convertStudentEntity(studentEntity);
     response.setStudent(student);
     return response;
 
@@ -52,6 +56,7 @@ public class StudentEndpoint {
     studentEntities.forEach((student) -> {
       Student studentType = new Student();
       BeanUtils.copyProperties(student, studentType);
+      //studentType = StudentUtility.convertStudentEntity(student);
       students.add(studentType);
     });
     response.getStudent().addAll(students);

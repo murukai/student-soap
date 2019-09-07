@@ -26,6 +26,7 @@
 			<xs:element name="dateOfBirth" type="xs:string" />
 			<xs:element name="gender" type="xs:string" />
 			<xs:element name="positionInFamily" type="xs:string" />
+			<xs:element name="formID" type="xs:long" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -39,12 +40,13 @@
 
 	<xs:complexType name="guardian">
 		<xs:sequence>
-			<xs:element name="studentID" type="xs:long" />
+			<xs:element name="guardianID" type="xs:long" />
 			<xs:element name="firstName" type="xs:string" />
 			<xs:element name="lastName" type="xs:string" />
 			<xs:element name="dateOfBirth" type="xs:string" />
 			<xs:element name="gender" type="xs:string" />
 			<xs:element name="accupation" type="xs:string" />
+			<xs:element name="studentID" type="xs:long" />
 		</xs:sequence>
 	</xs:complexType>
 
